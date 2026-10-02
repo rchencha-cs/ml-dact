@@ -1,8 +1,11 @@
-# JSS Remaining Evidence Gaps — Experimental Validation PRD
+# Quality-Gated Continuous Training Under Drift — JSS Resubmission Evidence Program
 
-**Document type:** Experimental validation PRD  
-**Target:** JSS resubmission  
-**Status:** Ready to execute from the research codebase  
+**Document type:** Experimental validation PRD
+**Project:** Quality-Gated Continuous Training under Drift: An Observational Case Study of an Inspectable MLOps Architecture
+**Target:** JSS resubmission
+**Version:** 1.1 — updated 2026-10-02 (EXP-03, EXP-06 complete; see Section 17)
+**Status:** In execution — 2 of 7 experiments complete, 5 remaining (see Section 17 for the live log)
+**Repository:** `rcramu/ml-dact` (this evidence program lives on branch `jss-evidence-program` of fork `rchencha-cs/ml-dact`, baseline commit `df2ad38`)
 **Rule:** No fabricated results. Results enter the paper only after executable experiments produce them.
 
 ---
@@ -21,10 +24,10 @@ The objective is **not** to make the paper longer. The objective is to produce e
 |---|---|---:|---|---|
 | EXP-01 | Independent post-selection holdout | P0 | Methodological validity | Not run |
 | EXP-02 | Matched policy baselines | P0 | Comparative evaluation | Not run |
-| EXP-03 | Threshold provenance audit | P0 | Reproducibility | Evidence collection required |
+| EXP-03 | Threshold provenance audit | P0 | Reproducibility | **Complete** — `evidence/exp03_threshold_provenance.md` |
 | EXP-04 | Structured Electricity replication | P1 | External/transferability | Partial |
 | EXP-05 | Reproducibility artifact audit | P1 | Artifact quality | Partial |
-| EXP-06 | Policy-state transition test suite | P1 | Software-engineering validation | Design ready |
+| EXP-06 | Policy-state transition test suite | P1 | Software-engineering validation | **Complete** — `evidence/exp06_policy_tests.json` (26/26 passing) |
 | EXP-07 | Decision-lineage replay test | P1 | Auditability | Design ready |
 
 ---
@@ -176,6 +179,14 @@ Otherwise report the experiment as comparative characterization.
 
 # 5. EXP-03 — Threshold Provenance Audit
 
+**Status: COMPLETE** — `code/evidence/exp03_threshold_provenance.md` + `.json`, commit `808dd9f`.
+All 6 thresholds traced to exact file:line. The `req.md` document cited in code
+comments as rationale could not be located anywhere in the repository, so those
+citations are recorded but flagged unverifiable. No pre-existing git history
+exists before this program's baseline (`df2ad38`), so provenance is disclosed
+as "engineering configuration," not a pre-registered trail, per Section 5's own
+fallback rule below.
+
 ## Attack addressed
 
 Reviewers may ask whether thresholds were selected before observing the results.
@@ -290,6 +301,18 @@ If a result cannot be traced, remove it from the final quantitative claims.
 
 # 8. EXP-06 — MEDP Policy-State Test Suite
 
+**Status: COMPLETE** — `code/evidence/exp06_policy_tests.json`, commit `808dd9f`.
+The Section 8.4 joint-cell decision matrix (previously duplicated across
+`routers/joint.py`, `ml/electricity.py`, and `scripts/run_electricity_natural.py`)
+was extracted into one module, `backend/app/ml/policy.py`, verified
+behavior-preserving (byte-identical decisions for every fold against the
+pre-refactor stored output). 26/26 tests pass in `backend/tests/test_policy.py`,
+covering the table below plus boundary/epsilon, missing-metric, stale-champion,
+duplicate/repeated-candidate, and rollback-after-promotion cases against the
+real production functions. One finding surfaced (not hidden): the
+`SIGNIFICANT`+`UNKNOWN` cell is labeled "Obtain ground truth" but the code
+actually fires retraining there — a label/behavior mismatch in production.
+
 ## Objective
 
 Demonstrate that the decision policy itself is testable software.
@@ -381,9 +404,9 @@ Do not change the paper's claims until the evidence is available.
 | Retraining is associated with improved quality in evaluated scenario | Available | Causal experiment only for causal claim |
 | Multi-metric gating changes decisions | Available | None required for counterexample claim |
 | Incumbent state affects decisions | Available | More repetitions strengthen |
-| Thresholds influence decisions | Available | Provenance audit |
+| Thresholds influence decisions | Available | Provenance audit — **done, EXP-03** |
 | MEDP is auditable | Partially available | Replay experiment strengthens |
-| MEDP is independently testable | Design established | Policy test suite |
+| MEDP is independently testable | Design established | Policy test suite — **done, EXP-06** |
 | MEDP outperforms drift-only | Not established | EXP-02 |
 | MEDP outperforms periodic retraining | Not established | EXP-02 |
 | MEDP outperforms performance-triggered retraining | Not established | EXP-02 |
@@ -576,14 +599,13 @@ No numerical results were changed in this pass.
 
 ## Still evidence-dependent
 
-No new result was invented. The remaining open items are still:
+No new result was invented. As of v1.1 (Section 17), EXP-03 and EXP-06 are
+complete; the remaining open items are:
 
 - EXP-01 independent post-selection holdout
 - EXP-02 matched policy baselines
-- EXP-03 threshold provenance audit
 - EXP-04 structured Electricity replication
 - EXP-05 reproducibility artifact audit
-- EXP-06 MEDP policy-state test suite
 - EXP-07 decision-lineage replay
 
 
@@ -602,4 +624,30 @@ No new result was invented. The remaining open items are still:
 
 ## Evidence-dependent items remain unchanged
 
-No results were fabricated or inferred. EXP-01 through EXP-07 remain open until executed from the research code and verified artifacts.
+No results were fabricated or inferred. As of v1.1, EXP-03 and EXP-06 have been
+executed from the research code with verified artifacts (Section 17); EXP-01,
+EXP-02, EXP-04, EXP-05, and EXP-07 remain open.
+
+---
+
+# 17. Execution Log — Evidence Program v1.1
+
+Tracks actual progress against Sections 2–9. Updated only from real command
+output and committed artifacts, never from memory, per this document's
+non-negotiable research rule.
+
+| Step | Status | Commit | Evidence |
+|---|---|---|---|
+| Step 0 — git init + baseline | Done | `df2ad38` | First version control this project has had; anchors all provenance from here forward |
+| EXP-03 — threshold provenance audit | **Done** | `808dd9f` | `code/evidence/exp03_threshold_provenance.md`, `.json` |
+| EXP-06 — policy-state test suite | **Done** | `808dd9f`, `8a70e1d` | `code/evidence/exp06_policy_tests.json`; 26/26 tests passing in `backend/tests/test_policy.py` |
+| EXP-07 — decision-lineage replay | Not started | — | Needs `policy_version`/`threshold_config_version` columns + a live Postgres to generate replayable runs |
+| EXP-01 — independent holdout | Not started | — | Needs a new seeded split never wired into ingestion |
+| EXP-02 — matched policy baselines | Not started | — | Needs drift-only/periodic/performance-triggered policy variants alongside MEDP |
+| EXP-04 — structured Electricity replication | Not started | — | Will extend `scripts/run_electricity_natural.py` to call the real `policy.py`/`gates.py` |
+| EXP-05 — reproducibility artifact audit | Not started | — | Will stamp every `evidence/*.json` with the full provenance block once the other experiments exist to audit |
+
+**Where this lives:** the working repository is `code/` in this project directory
+(its own local git history, commits above). A snapshot of this work was also
+pushed to branch `jss-evidence-program` on `rchencha-cs/ml-dact` (a fork of the
+paper's repository `rcramu/ml-dact`) for review; no PR has been opened yet.
