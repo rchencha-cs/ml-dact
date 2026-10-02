@@ -1,18 +1,18 @@
-# Quality-Gated Continuous Training Under Drift — JSS Resubmission Evidence Program
+# Quality-Gated Continuous Training Under Drift — Resubmission Evidence Program
 
-**Document type:** Experimental validation PRD
+**Document type:** Experimental validation plan
 **Project:** Quality-Gated Continuous Training under Drift: An Observational Case Study of an Inspectable MLOps Architecture
-**Target:** JSS resubmission
+**Target:** journal resubmission
 **Version:** 1.1 — updated 2026-10-02 (EXP-03, EXP-06 complete; see Section 17)
 **Status:** In execution — 2 of 7 experiments complete, 5 remaining (see Section 17 for the live log)
-**Repository:** `rcramu/ml-dact` (this evidence program lives on branch `jss-evidence-program` of fork `rchencha-cs/ml-dact`, baseline commit `df2ad38`)
+**Repository:** `rcramu/ml-dact` (this evidence program lives on branch `evidence-program` of fork `rchencha-cs/ml-dact`, baseline commit `df2ad38`)
 **Rule:** No fabricated results. Results enter the paper only after executable experiments produce them.
 
 ---
 
 ## 1. Objective
 
-Close the remaining evidence gaps identified during the five-pass hostile JSS review while preserving the manuscript's current claim boundaries.
+Close the remaining evidence gaps identified during the five-pass hostile review while preserving the manuscript's current claim boundaries.
 
 The objective is **not** to make the paper longer. The objective is to produce evidence that addresses the specific reviewer attacks that cannot be resolved by prose.
 
@@ -472,7 +472,7 @@ Never replace a failed experiment with an assumed result.
 
 ---
 
-# 13. Final JSS Submission Gate
+# 13. Final Submission Gate
 
 Before submission, all of the following should be answered:
 
@@ -559,7 +559,7 @@ No RQ should have a conclusion stronger than its experiment.
 
 After EXP-01 through EXP-07 are executed where applicable, run one final hostile review specifically asking:
 
-1. What claim would a skeptical JSS reviewer say is unsupported?
+1. What claim would a skeptical reviewer say is unsupported?
 2. Which result could be explained by an alternative mechanism?
 3. Which threshold could be accused of retrospective tuning?
 4. Which comparison is missing?
@@ -649,5 +649,5 @@ non-negotiable research rule.
 
 **Where this lives:** the working repository is `code/` in this project directory
 (its own local git history, commits above). A snapshot of this work was also
-pushed to branch `jss-evidence-program` on `rchencha-cs/ml-dact` (a fork of the
+pushed to branch `evidence-program` on `rchencha-cs/ml-dact` (a fork of the
 paper's repository `rcramu/ml-dact`) for review; no PR has been opened yet.
