@@ -17,6 +17,7 @@ from .. import schemas
 from ..config import settings
 from ..database import get_db
 from ..ml import champion_store
+from ..ml import policy
 from ..ml.drift import drift_level, psi_numeric
 from ..ml.evaluation_metrics import classification_metrics
 from ..ml.pytorch_trainer import predict
@@ -32,21 +33,6 @@ ALLOWED_SCENARIOS = {
     "regression",
 }
 F1_GOOD = settings.minimum_f1
-
-
-def _cell(drift: str, ev: str) -> str:
-    table = {
-        ("NORMAL", "GOOD"): "Continue",
-        ("NORMAL", "BAD"): "Investigate model",
-        ("NORMAL", "UNKNOWN"): "Continue monitoring",
-        ("WARNING", "GOOD"): "Continue",
-        ("WARNING", "BAD"): "Investigate model",
-        ("WARNING", "UNKNOWN"): "Continue monitoring",
-        ("SIGNIFICANT", "GOOD"): "Investigate",
-        ("SIGNIFICANT", "BAD"): "Retrain / review",
-        ("SIGNIFICANT", "UNKNOWN"): "Obtain ground truth",
-    }
-    return table.get((drift, ev), "unspecified")
 
 
 def _orm_to_dicts(rows: list[m.RawRecord]) -> list[dict]:
@@ -114,7 +100,7 @@ def _score_joint(db: Session, trained_model: m.TrainedModel, scenario: str, seed
                 ev_level = "UNKNOWN"
         else:
             ev_level = "UNKNOWN"
-    fire = dlev == "SIGNIFICANT" and ev_level != "GOOD"
+    fire = policy.should_retrain(dlev, ev_level)
     return {
         "model": trained_model.name,
         "scenario": scenario,
@@ -125,9 +111,9 @@ def _score_joint(db: Session, trained_model: m.TrainedModel, scenario: str, seed
         "champion_f1_on_batch": champ_f1,
         "n_test": n_test,
         "evaluation_level": ev_level,
-        "matrix_cell": _cell(dlev, ev_level),
+        "matrix_cell": policy.joint_cell(dlev, ev_level),
         "joint_retrain": fire,
-        "predicate": "Retrain = (DriftLevel == SIGNIFICANT) and (EvaluationLevel != GOOD)",
+        "predicate": policy.PREDICATE_TEXT,
     }
 
 
