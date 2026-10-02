@@ -1,7 +1,7 @@
-# Quality-Gated Continuous Training Under Drift — Resubmission Evidence Program
+# Quality-Gated Model Evolution in MLOps — Resubmission Evidence Program
 
 **Document type:** Experimental validation plan
-**Project:** Quality-Gated Continuous Training under Drift: An Observational Case Study of an Inspectable MLOps Architecture
+**Project:** Quality-Gated Model Evolution in MLOps: An Empirical Study of an Inspectable Decision Procedure for Distribution Shift
 **Target:** journal resubmission
 **Version:** 1.1 — updated 2026-10-02 (EXP-03, EXP-06 complete; see Section 17)
 **Status:** In execution — 2 of 7 experiments complete, 5 remaining (see Section 17 for the live log)

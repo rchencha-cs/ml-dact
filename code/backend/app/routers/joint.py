@@ -18,6 +18,7 @@ from ..config import settings
 from ..database import get_db
 from ..ml import champion_store
 from ..ml import policy
+from ..ml import provenance
 from ..ml.drift import drift_level, psi_numeric
 from ..ml.evaluation_metrics import classification_metrics
 from ..ml.pytorch_trainer import predict
@@ -132,6 +133,16 @@ def get_joint_cell(
 def post_joint_retrain(model: str, body: schemas.JointRetrainRequest, db: Session = Depends(get_db)):
     trained_model = _get_model(db, model)
     decision = _score_joint(db, trained_model, body.scenario, body.seed)
+    joint_decision = m.JointDecision(
+        model_id=trained_model.id, scenario_key=body.scenario, seed=body.seed,
+        psi_mean=decision["psi_mean"], drift_level=decision["drift_level"],
+        evaluation_level=decision["evaluation_level"], matrix_cell=decision["matrix_cell"],
+        decided_state=policy.decide_trigger_state(decision["drift_level"], decision["evaluation_level"]),
+        trained=decision["joint_retrain"],
+        policy_version=provenance.policy_version(), threshold_config_version=provenance.threshold_config_version(),
+    )
+    db.add(joint_decision)
+    db.flush()
     if not decision["joint_retrain"]:
         pe._audit(
             db,
@@ -156,6 +167,8 @@ def post_joint_retrain(model: str, body: schemas.JointRetrainRequest, db: Sessio
         ),
         scenario=body.scenario,
     )
+    joint_decision.run_id = run.id
+    db.commit()
     from .. import serializers as ser
     return {
         "decision": decision,
