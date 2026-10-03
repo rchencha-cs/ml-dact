@@ -3,8 +3,8 @@
 **Document type:** Experimental validation plan
 **Project:** Quality-Gated Model Evolution in MLOps: An Empirical Study of an Inspectable Decision Procedure for Distribution Shift
 **Target:** journal resubmission
-**Version:** 1.1 — updated 2026-10-02 (EXP-03, EXP-06 complete; see Section 17)
-**Status:** In execution — 2 of 7 experiments complete, 5 remaining (see Section 17 for the live log)
+**Version:** 1.2 — updated 2026-10-03 (EXP-03, EXP-06, EXP-07 complete; see Section 17)
+**Status:** In execution — 3 of 7 experiments complete, 4 remaining (see Section 17 for the live log)
 **Repository:** `rcramu/ml-dact` (this evidence program lives on branch `evidence-program` of fork `rchencha-cs/ml-dact`, baseline commit `df2ad38`)
 **Rule:** No fabricated results. Results enter the paper only after executable experiments produce them.
 
@@ -28,7 +28,7 @@ The objective is **not** to make the paper longer. The objective is to produce e
 | EXP-04 | Structured Electricity replication | P1 | External/transferability | Partial |
 | EXP-05 | Reproducibility artifact audit | P1 | Artifact quality | Partial |
 | EXP-06 | Policy-state transition test suite | P1 | Software-engineering validation | **Complete** — `evidence/exp06_policy_tests.json` (26/26 passing) |
-| EXP-07 | Decision-lineage replay test | P1 | Auditability | Design ready |
+| EXP-07 | Decision-lineage replay test | P1 | Auditability | **Complete** — `evidence/exp07_decision_lineage_replay.md` (23/23 match) |
 
 ---
 
@@ -349,6 +349,16 @@ Strengthens the claim:
 
 # 9. EXP-07 — Decision-Lineage Replay
 
+**Status: COMPLETE** — `code/evidence/exp07_decision_lineage_replay.md` + `.json`, commit `35b1f7a`.
+15 JointDecision rows (5 churn scenarios × 2 seeds + 5 Electricity folds) and 8
+EvaluationResult rows were generated against a fresh, isolated docker-compose stack,
+then independently replayed through the real `policy.py`/`gates.py` functions.
+**23/23 replayed actions matched the recorded action (100%)**, covering all three
+trigger states (RETAIN/EVALUATE/RETRAIN) and both gate outcomes (PASS/FAIL).
+Rollback is disclosed as out of scope: it is an externally/manually triggered action
+in this codebase, not an automated policy output, so there is no "decision" to replay
+(its state-transition mechanics are already covered by EXP-06's tests).
+
 ## Objective
 
 Prove that a historical model-evolution decision can be reconstructed from its persisted evidence.
@@ -405,7 +415,7 @@ Do not change the paper's claims until the evidence is available.
 | Multi-metric gating changes decisions | Available | None required for counterexample claim |
 | Incumbent state affects decisions | Available | More repetitions strengthen |
 | Thresholds influence decisions | Available | Provenance audit — **done, EXP-03** |
-| MEDP is auditable | Partially available | Replay experiment strengthens |
+| MEDP is auditable | Partially available | Replay experiment strengthens — **done, EXP-07 (23/23 match)** |
 | MEDP is independently testable | Design established | Policy test suite — **done, EXP-06** |
 | MEDP outperforms drift-only | Not established | EXP-02 |
 | MEDP outperforms periodic retraining | Not established | EXP-02 |
@@ -599,14 +609,13 @@ No numerical results were changed in this pass.
 
 ## Still evidence-dependent
 
-No new result was invented. As of v1.1 (Section 17), EXP-03 and EXP-06 are
-complete; the remaining open items are:
+No new result was invented. As of v1.2 (Section 17), EXP-03, EXP-06, and EXP-07
+are complete; the remaining open items are:
 
 - EXP-01 independent post-selection holdout
 - EXP-02 matched policy baselines
 - EXP-04 structured Electricity replication
 - EXP-05 reproducibility artifact audit
-- EXP-07 decision-lineage replay
 
 
 ---
@@ -624,13 +633,13 @@ complete; the remaining open items are:
 
 ## Evidence-dependent items remain unchanged
 
-No results were fabricated or inferred. As of v1.1, EXP-03 and EXP-06 have been
-executed from the research code with verified artifacts (Section 17); EXP-01,
-EXP-02, EXP-04, EXP-05, and EXP-07 remain open.
+No results were fabricated or inferred. As of v1.2, EXP-03, EXP-06, and EXP-07
+have been executed from the research code with verified artifacts (Section 17);
+EXP-01, EXP-02, EXP-04, and EXP-05 remain open.
 
 ---
 
-# 17. Execution Log — Evidence Program v1.1
+# 17. Execution Log — Evidence Program v1.2
 
 Tracks actual progress against Sections 2–9. Updated only from real command
 output and committed artifacts, never from memory, per this document's
@@ -641,7 +650,7 @@ non-negotiable research rule.
 | Step 0 — git init + baseline | Done | `df2ad38` | First version control this project has had; anchors all provenance from here forward |
 | EXP-03 — threshold provenance audit | **Done** | `808dd9f` | `code/evidence/exp03_threshold_provenance.md`, `.json` |
 | EXP-06 — policy-state test suite | **Done** | `808dd9f`, `8a70e1d` | `code/evidence/exp06_policy_tests.json`; 26/26 tests passing in `backend/tests/test_policy.py` |
-| EXP-07 — decision-lineage replay | Not started | — | Needs `policy_version`/`threshold_config_version` columns + a live Postgres to generate replayable runs |
+| EXP-07 — decision-lineage replay | **Done** | `aae2df0`, `35b1f7a` | `code/evidence/exp07_decision_lineage_replay.md`, `.json`; 23/23 replayed decisions matched (100%) |
 | EXP-01 — independent holdout | Not started | — | Needs a new seeded split never wired into ingestion |
 | EXP-02 — matched policy baselines | Not started | — | Needs drift-only/periodic/performance-triggered policy variants alongside MEDP |
 | EXP-04 — structured Electricity replication | Not started | — | Will extend `scripts/run_electricity_natural.py` to call the real `policy.py`/`gates.py` |

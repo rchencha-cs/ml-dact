@@ -14,6 +14,7 @@ postgres port:
 from __future__ import annotations
 
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -26,7 +27,8 @@ from sqlalchemy.orm import sessionmaker
 from app.ml import decision_record
 from app import models as m  # noqa: F401
 
-HOST_DATABASE_URL = "postgresql+psycopg2://dact_user:dact_pass@localhost:5476/dact_training"
+HOST_POSTGRES_PORT = os.environ.get("CTP_POSTGRES_PORT", "5476")
+HOST_DATABASE_URL = f"postgresql+psycopg2://dact_user:dact_pass@localhost:{HOST_POSTGRES_PORT}/dact_training"
 OUT = Path(__file__).resolve().parents[1] / "evidence" / "exp07_replay.json"
 
 
