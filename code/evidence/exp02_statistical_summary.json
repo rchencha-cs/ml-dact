@@ -1,0 +1,163 @@
+{
+  "experiment_id": "EXP-02",
+  "git_commit": "55afc88",
+  "timestamp": "2026-10-03T06:55:33.657730+00:00",
+  "source_artifact": "evidence/exp02_matched_baselines.json",
+  "metric": "final_f1",
+  "baseline": "medp",
+  "per_run": [
+    {
+      "seed": 1,
+      "drift_only": 0.9739952718676123,
+      "periodic": 0.7237354085603113,
+      "performance_triggered": 0.7887323943661971,
+      "medp": 0.7887323943661971,
+      "static": 0.7887323943661971
+    },
+    {
+      "seed": 2,
+      "drift_only": 0.9507389162561576,
+      "periodic": 0.7545454545454545,
+      "performance_triggered": 0.7545454545454545,
+      "medp": 0.7545454545454545,
+      "static": 0.7545454545454545
+    },
+    {
+      "seed": 3,
+      "drift_only": 0.970873786407767,
+      "periodic": 0.8151658767772512,
+      "performance_triggered": 0.8151658767772512,
+      "medp": 0.8151658767772512,
+      "static": 0.8151658767772512
+    },
+    {
+      "seed": 4,
+      "drift_only": 0.9633251833740831,
+      "periodic": 0.7870370370370371,
+      "performance_triggered": 0.7870370370370371,
+      "medp": 0.7870370370370371,
+      "static": 0.7870370370370371
+    },
+    {
+      "seed": 5,
+      "drift_only": 0.942643391521197,
+      "periodic": 0.868421052631579,
+      "performance_triggered": 0.868421052631579,
+      "medp": 0.868421052631579,
+      "static": 0.868421052631579
+    },
+    {
+      "seed": 6,
+      "drift_only": 0.9629629629629629,
+      "periodic": 0.8047808764940239,
+      "performance_triggered": 0.8047808764940239,
+      "medp": 0.8047808764940239,
+      "static": 0.8047808764940239
+    },
+    {
+      "seed": 7,
+      "drift_only": 0.8244274809160306,
+      "periodic": 0.8244274809160306,
+      "performance_triggered": 0.8244274809160306,
+      "medp": 0.8244274809160306,
+      "static": 0.8244274809160306
+    },
+    {
+      "seed": 8,
+      "drift_only": 0.9576059850374065,
+      "periodic": 0.7984496124031008,
+      "performance_triggered": 0.7984496124031008,
+      "medp": 0.7984496124031008,
+      "static": 0.7984496124031008
+    },
+    {
+      "seed": 9,
+      "drift_only": 0.9523809523809523,
+      "periodic": 0.7692307692307693,
+      "performance_triggered": 0.7763713080168776,
+      "medp": 0.7763713080168776,
+      "static": 0.7763713080168776
+    },
+    {
+      "seed": 10,
+      "drift_only": 0.9603960396039604,
+      "periodic": 0.8118811881188119,
+      "performance_triggered": 0.8118811881188119,
+      "medp": 0.8118811881188119,
+      "static": 0.8118811881188119
+    },
+    {
+      "seed": 11,
+      "drift_only": 0.9636803874092009,
+      "periodic": 0.7699530516431925,
+      "performance_triggered": 0.7699530516431925,
+      "medp": 0.7699530516431925,
+      "static": 0.7699530516431925
+    },
+    {
+      "seed": 12,
+      "drift_only": 0.9716981132075472,
+      "periodic": 0.8220338983050848,
+      "performance_triggered": 0.8220338983050848,
+      "medp": 0.8220338983050848,
+      "static": 0.8220338983050848
+    }
+  ],
+  "summary": {
+    "drift_only": {
+      "mean_final_f1": 0.9496,
+      "std_final_f1": 0.0405,
+      "mean_retrain_count": 2,
+      "mean_promotion_count": 1.917,
+      "mean_unnecessary_retrain_count": 0.083,
+      "mean_training_seconds": 1.374,
+      "paired_mean_diff_vs_medp": 0.1477,
+      "paired_std_diff_vs_medp": 0.0564,
+      "paired_cohens_d_vs_medp": 2.6183
+    },
+    "periodic": {
+      "mean_final_f1": 0.7958,
+      "std_final_f1": 0.038,
+      "mean_retrain_count": 3,
+      "mean_promotion_count": 1.167,
+      "mean_unnecessary_retrain_count": 0.833,
+      "mean_training_seconds": 1.248,
+      "paired_mean_diff_vs_medp": -0.006,
+      "paired_std_diff_vs_medp": 0.0187,
+      "paired_cohens_d_vs_medp": -0.3217
+    },
+    "performance_triggered": {
+      "mean_final_f1": 0.8018,
+      "std_final_f1": 0.0301,
+      "mean_retrain_count": 2.333,
+      "mean_promotion_count": 1,
+      "mean_unnecessary_retrain_count": 1.25,
+      "mean_training_seconds": 1.404,
+      "paired_mean_diff_vs_medp": 0.0,
+      "paired_std_diff_vs_medp": 0.0,
+      "paired_cohens_d_vs_medp": 0.0
+    },
+    "medp": {
+      "mean_final_f1": 0.8018,
+      "std_final_f1": 0.0301,
+      "mean_retrain_count": 1,
+      "mean_promotion_count": 1,
+      "mean_unnecessary_retrain_count": 0,
+      "mean_training_seconds": 0.577,
+      "paired_mean_diff_vs_medp": 0.0,
+      "paired_std_diff_vs_medp": 0.0,
+      "paired_cohens_d_vs_medp": 0.0
+    },
+    "static": {
+      "mean_final_f1": 0.8018,
+      "std_final_f1": 0.0301,
+      "mean_retrain_count": 1,
+      "mean_promotion_count": 1,
+      "mean_unnecessary_retrain_count": 0,
+      "mean_training_seconds": 0.581,
+      "paired_mean_diff_vs_medp": 0.0,
+      "paired_std_diff_vs_medp": 0.0,
+      "paired_cohens_d_vs_medp": 0.0
+    }
+  }
+}

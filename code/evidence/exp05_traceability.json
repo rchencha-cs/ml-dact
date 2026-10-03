@@ -1,0 +1,204 @@
+{
+  "experiment_id": "EXP-05",
+  "required_schema_fields": [
+    "experiment_id",
+    "git_commit",
+    "dataset_version",
+    "model_version",
+    "policy_version",
+    "threshold_config_version",
+    "random_seed",
+    "replicate_id",
+    "environment",
+    "timestamp",
+    "evaluation_window",
+    "result_artifact"
+  ],
+  "files_audited": 7,
+  "substantively_traceable": 7,
+  "not_traceable": 0,
+  "results": [
+    {
+      "file": "evidence/exp01_holdout.json",
+      "experiment_id": "EXP-01",
+      "schema_fields_present": [
+        "experiment_id",
+        "git_commit",
+        "timestamp"
+      ],
+      "schema_fields_missing": [
+        "dataset_version",
+        "model_version",
+        "policy_version",
+        "threshold_config_version",
+        "random_seed",
+        "replicate_id",
+        "environment",
+        "evaluation_window",
+        "result_artifact"
+      ],
+      "cited_commit": "ee6583b",
+      "commit_verified": true,
+      "mapped_script": "scripts/exp01_holdout_eval.py",
+      "script_exists_on_disk": true,
+      "substantively_traceable": true,
+      "chain_breaks": []
+    },
+    {
+      "file": "evidence/exp02_matched_baselines.json",
+      "experiment_id": "EXP-02",
+      "schema_fields_present": [
+        "experiment_id",
+        "git_commit",
+        "timestamp"
+      ],
+      "schema_fields_missing": [
+        "dataset_version",
+        "model_version",
+        "policy_version",
+        "threshold_config_version",
+        "random_seed",
+        "replicate_id",
+        "environment",
+        "evaluation_window",
+        "result_artifact"
+      ],
+      "cited_commit": "00ff42f",
+      "commit_verified": true,
+      "mapped_script": "scripts/exp02_matched_baselines.py",
+      "script_exists_on_disk": true,
+      "substantively_traceable": true,
+      "chain_breaks": []
+    },
+    {
+      "file": "evidence/exp02_statistical_summary.json",
+      "experiment_id": "EXP-02",
+      "schema_fields_present": [
+        "experiment_id",
+        "git_commit",
+        "timestamp"
+      ],
+      "schema_fields_missing": [
+        "dataset_version",
+        "model_version",
+        "policy_version",
+        "threshold_config_version",
+        "random_seed",
+        "replicate_id",
+        "environment",
+        "evaluation_window",
+        "result_artifact"
+      ],
+      "cited_commit": "55afc88",
+      "commit_verified": true,
+      "mapped_script": "scripts/score_exp02.py",
+      "script_exists_on_disk": true,
+      "substantively_traceable": true,
+      "chain_breaks": []
+    },
+    {
+      "file": "evidence/exp03_threshold_provenance.json",
+      "experiment_id": "EXP-03",
+      "schema_fields_present": [
+        "experiment_id",
+        "git_commit"
+      ],
+      "schema_fields_missing": [
+        "dataset_version",
+        "model_version",
+        "policy_version",
+        "threshold_config_version",
+        "random_seed",
+        "replicate_id",
+        "environment",
+        "timestamp",
+        "evaluation_window",
+        "result_artifact"
+      ],
+      "cited_commit": "df2ad389fccb3fcc41d8c51b030d4f42202f55a2",
+      "commit_verified": true,
+      "mapped_script": null,
+      "script_exists_on_disk": null,
+      "substantively_traceable": true,
+      "chain_breaks": []
+    },
+    {
+      "file": "evidence/exp04_electricity_replication.json",
+      "experiment_id": "EXP-04",
+      "schema_fields_present": [
+        "experiment_id",
+        "git_commit",
+        "timestamp"
+      ],
+      "schema_fields_missing": [
+        "dataset_version",
+        "model_version",
+        "policy_version",
+        "threshold_config_version",
+        "random_seed",
+        "replicate_id",
+        "environment",
+        "evaluation_window",
+        "result_artifact"
+      ],
+      "cited_commit": "55afc88",
+      "commit_verified": true,
+      "mapped_script": "scripts/run_electricity_natural.py",
+      "script_exists_on_disk": true,
+      "substantively_traceable": true,
+      "chain_breaks": []
+    },
+    {
+      "file": "evidence/exp06_policy_tests.json",
+      "experiment_id": "EXP-06",
+      "schema_fields_present": [
+        "experiment_id",
+        "git_commit",
+        "policy_version"
+      ],
+      "schema_fields_missing": [
+        "dataset_version",
+        "model_version",
+        "threshold_config_version",
+        "random_seed",
+        "replicate_id",
+        "environment",
+        "timestamp",
+        "evaluation_window",
+        "result_artifact"
+      ],
+      "cited_commit": "808dd9f",
+      "commit_verified": true,
+      "mapped_script": "backend/tests/test_policy.py",
+      "script_exists_on_disk": true,
+      "substantively_traceable": true,
+      "chain_breaks": []
+    },
+    {
+      "file": "evidence/exp07_replay.json",
+      "experiment_id": "EXP-07",
+      "schema_fields_present": [
+        "experiment_id",
+        "git_commit",
+        "timestamp"
+      ],
+      "schema_fields_missing": [
+        "dataset_version",
+        "model_version",
+        "policy_version",
+        "threshold_config_version",
+        "random_seed",
+        "replicate_id",
+        "environment",
+        "evaluation_window",
+        "result_artifact"
+      ],
+      "cited_commit": "026e7f7",
+      "commit_verified": true,
+      "mapped_script": "scripts/exp07_replay.py",
+      "script_exists_on_disk": true,
+      "substantively_traceable": true,
+      "chain_breaks": []
+    }
+  ]
+}

@@ -1,0 +1,4077 @@
+{
+  "experiment_id": "EXP-02",
+  "git_commit": "00ff42f",
+  "timestamp": "2026-10-03T06:51:51.148205+00:00",
+  "policies": [
+    "drift_only",
+    "periodic",
+    "performance_triggered",
+    "medp",
+    "static"
+  ],
+  "periodic_every_n": 2,
+  "scenarios": [
+    "healthy",
+    "feature_drift",
+    "volume_anomaly",
+    "label_imbalance",
+    "regression"
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "per_seed": {
+    "1": {
+      "drift_only": {
+        "final_f1": 0.9739952718676123,
+        "final_precision": 0.9626168224299065,
+        "final_recall": 0.9856459330143541,
+        "final_accuracy": 0.9511111111111111,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.983,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7887,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.974,
+            "regression_pct": -23.49,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.7237354085603113,
+        "final_precision": 0.6326530612244898,
+        "final_recall": 0.8454545454545455,
+        "final_accuracy": 0.6844444444444444,
+        "retrain_count": 3,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 4.0,
+        "time_to_recovery_cycles": 1,
+        "training_seconds": 1.332,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7887,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7237,
+            "regression_pct": 8.24,
+            "action": "PROMOTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.7887323943661971,
+        "final_precision": 0.8,
+        "final_recall": 0.7777777777777778,
+        "final_accuracy": 0.8,
+        "retrain_count": 2,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.237,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7887,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.3333,
+            "regression_pct": 57.74,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.7887323943661971,
+        "final_precision": 0.8,
+        "final_recall": 0.7777777777777778,
+        "final_accuracy": 0.8,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.585,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7887,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.7887323943661971,
+        "final_precision": 0.8,
+        "final_recall": 0.7777777777777778,
+        "final_accuracy": 0.8,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.593,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7887,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "2": {
+      "drift_only": {
+        "final_f1": 0.9507389162561576,
+        "final_precision": 0.9368932038834952,
+        "final_recall": 0.965,
+        "final_accuracy": 0.9111111111111111,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.288,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7545,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.9507,
+            "regression_pct": -26.0,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.7545454545454545,
+        "final_precision": 0.6484375,
+        "final_recall": 0.9021739130434783,
+        "final_accuracy": 0.76,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.233,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7545,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.749,
+            "regression_pct": 0.73,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.7545454545454545,
+        "final_precision": 0.6484375,
+        "final_recall": 0.9021739130434783,
+        "final_accuracy": 0.76,
+        "retrain_count": 2,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.249,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7545,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.1429,
+            "regression_pct": 81.07,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.7545454545454545,
+        "final_precision": 0.6484375,
+        "final_recall": 0.9021739130434783,
+        "final_accuracy": 0.76,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.572,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7545,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.7545454545454545,
+        "final_precision": 0.6484375,
+        "final_recall": 0.9021739130434783,
+        "final_accuracy": 0.76,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.548,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7545,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "3": {
+      "drift_only": {
+        "final_f1": 0.970873786407767,
+        "final_precision": 0.966183574879227,
+        "final_recall": 0.975609756097561,
+        "final_accuracy": 0.9466666666666667,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.356,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8152,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.9709,
+            "regression_pct": -19.1,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.8151658767772512,
+        "final_precision": 0.8269230769230769,
+        "final_recall": 0.8037383177570093,
+        "final_accuracy": 0.8266666666666667,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.324,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8152,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.6957,
+            "regression_pct": 14.66,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.8151658767772512,
+        "final_precision": 0.8269230769230769,
+        "final_recall": 0.8037383177570093,
+        "final_accuracy": 0.8266666666666667,
+        "retrain_count": 2,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.255,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8152,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.5,
+            "regression_pct": 38.66,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.8151658767772512,
+        "final_precision": 0.8269230769230769,
+        "final_recall": 0.8037383177570093,
+        "final_accuracy": 0.8266666666666667,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.589,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8152,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.8151658767772512,
+        "final_precision": 0.8269230769230769,
+        "final_recall": 0.8037383177570093,
+        "final_accuracy": 0.8266666666666667,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.606,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8152,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "4": {
+      "drift_only": {
+        "final_f1": 0.9633251833740831,
+        "final_precision": 0.933649289099526,
+        "final_recall": 0.9949494949494949,
+        "final_accuracy": 0.9333333333333333,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.354,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.787,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.9633,
+            "regression_pct": -22.4,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.7870370370370371,
+        "final_precision": 0.7456140350877193,
+        "final_recall": 0.8333333333333334,
+        "final_accuracy": 0.7955555555555556,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.221,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.787,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.7258,
+            "regression_pct": 7.78,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.7870370370370371,
+        "final_precision": 0.7456140350877193,
+        "final_recall": 0.8333333333333334,
+        "final_accuracy": 0.7955555555555556,
+        "retrain_count": 2,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.222,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.787,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.5,
+            "regression_pct": 36.47,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.7870370370370371,
+        "final_precision": 0.7456140350877193,
+        "final_recall": 0.8333333333333334,
+        "final_accuracy": 0.7955555555555556,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.578,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.787,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.7870370370370371,
+        "final_precision": 0.7456140350877193,
+        "final_recall": 0.8333333333333334,
+        "final_accuracy": 0.7955555555555556,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.554,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.787,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "5": {
+      "drift_only": {
+        "final_f1": 0.942643391521197,
+        "final_precision": 0.949748743718593,
+        "final_recall": 0.9356435643564357,
+        "final_accuracy": 0.8977777777777778,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.357,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8684,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.9426,
+            "regression_pct": -8.55,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.868421052631579,
+        "final_precision": 0.8114754098360656,
+        "final_recall": 0.9339622641509434,
+        "final_accuracy": 0.8666666666666667,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.26,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8684,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.6667,
+            "regression_pct": 23.23,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.868421052631579,
+        "final_precision": 0.8114754098360656,
+        "final_recall": 0.9339622641509434,
+        "final_accuracy": 0.8666666666666667,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 2,
+        "unnecessary_retrain_count": 2,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.875,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8684,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.0,
+            "regression_pct": 100.0,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.6667,
+            "regression_pct": 23.23,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.868421052631579,
+        "final_precision": 0.8114754098360656,
+        "final_recall": 0.9339622641509434,
+        "final_accuracy": 0.8666666666666667,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.549,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8684,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.868421052631579,
+        "final_precision": 0.8114754098360656,
+        "final_recall": 0.9339622641509434,
+        "final_accuracy": 0.8666666666666667,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.535,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8684,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "6": {
+      "drift_only": {
+        "final_f1": 0.9629629629629629,
+        "final_precision": 0.9512195121951219,
+        "final_recall": 0.975,
+        "final_accuracy": 0.9333333333333333,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.354,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8048,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.963,
+            "regression_pct": -19.66,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.8047808764940239,
+        "final_precision": 0.7062937062937062,
+        "final_recall": 0.9351851851851852,
+        "final_accuracy": 0.7822222222222223,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.226,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8048,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.658,
+            "regression_pct": 18.24,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.8047808764940239,
+        "final_precision": 0.7062937062937062,
+        "final_recall": 0.9351851851851852,
+        "final_accuracy": 0.7822222222222223,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.314,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8048,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.3333,
+            "regression_pct": 58.58,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.8047808764940239,
+        "final_precision": 0.7062937062937062,
+        "final_recall": 0.9351851851851852,
+        "final_accuracy": 0.7822222222222223,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.556,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8048,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.8047808764940239,
+        "final_precision": 0.7062937062937062,
+        "final_recall": 0.9351851851851852,
+        "final_accuracy": 0.7822222222222223,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.568,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8048,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "7": {
+      "drift_only": {
+        "final_f1": 0.8244274809160306,
+        "final_precision": 0.7346938775510204,
+        "final_recall": 0.9391304347826087,
+        "final_accuracy": 0.7955555555555556,
+        "retrain_count": 2,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.32,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8244,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.9479,
+            "regression_pct": -14.98,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.8244274809160306,
+        "final_precision": 0.7346938775510204,
+        "final_recall": 0.9391304347826087,
+        "final_accuracy": 0.7955555555555556,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.228,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8244,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.6897,
+            "regression_pct": 16.35,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.8244274809160306,
+        "final_precision": 0.7346938775510204,
+        "final_recall": 0.9391304347826087,
+        "final_accuracy": 0.7955555555555556,
+        "retrain_count": 2,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.261,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8244,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.25,
+            "regression_pct": 69.68,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.8244274809160306,
+        "final_precision": 0.7346938775510204,
+        "final_recall": 0.9391304347826087,
+        "final_accuracy": 0.7955555555555556,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.588,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8244,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.8244274809160306,
+        "final_precision": 0.7346938775510204,
+        "final_recall": 0.9391304347826087,
+        "final_accuracy": 0.7955555555555556,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.611,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8244,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "8": {
+      "drift_only": {
+        "final_f1": 0.9576059850374065,
+        "final_precision": 0.9552238805970149,
+        "final_recall": 0.96,
+        "final_accuracy": 0.9244444444444444,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.375,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7984,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.9576,
+            "regression_pct": -19.93,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.7984496124031008,
+        "final_precision": 0.7006802721088435,
+        "final_recall": 0.9279279279279279,
+        "final_accuracy": 0.7688888888888888,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.305,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7984,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.7043,
+            "regression_pct": 11.79,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.7984496124031008,
+        "final_precision": 0.7006802721088435,
+        "final_recall": 0.9279279279279279,
+        "final_accuracy": 0.7688888888888888,
+        "retrain_count": 2,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.302,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7984,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.5714,
+            "regression_pct": 28.43,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.7984496124031008,
+        "final_precision": 0.7006802721088435,
+        "final_recall": 0.9279279279279279,
+        "final_accuracy": 0.7688888888888888,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.552,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7984,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.7984496124031008,
+        "final_precision": 0.7006802721088435,
+        "final_recall": 0.9279279279279279,
+        "final_accuracy": 0.7688888888888888,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.63,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7984,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "9": {
+      "drift_only": {
+        "final_f1": 0.9523809523809523,
+        "final_precision": 0.9644670050761421,
+        "final_recall": 0.9405940594059405,
+        "final_accuracy": 0.9155555555555556,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.296,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7764,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.9524,
+            "regression_pct": -22.67,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.7692307692307693,
+        "final_precision": 0.6666666666666666,
+        "final_recall": 0.9090909090909091,
+        "final_accuracy": 0.7066666666666667,
+        "retrain_count": 3,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 4.0,
+        "time_to_recovery_cycles": 1,
+        "training_seconds": 1.186,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7764,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7692,
+            "regression_pct": 0.92,
+            "action": "PROMOTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.7763713080168776,
+        "final_precision": 0.736,
+        "final_recall": 0.8214285714285714,
+        "final_accuracy": 0.7644444444444445,
+        "retrain_count": 2,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.215,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7764,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.0,
+            "regression_pct": 100.0,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.7763713080168776,
+        "final_precision": 0.736,
+        "final_recall": 0.8214285714285714,
+        "final_accuracy": 0.7644444444444445,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.602,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7764,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.7763713080168776,
+        "final_precision": 0.736,
+        "final_recall": 0.8214285714285714,
+        "final_accuracy": 0.7644444444444445,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.636,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.7764,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "10": {
+      "drift_only": {
+        "final_f1": 0.9603960396039604,
+        "final_precision": 0.9556650246305419,
+        "final_recall": 0.9651741293532339,
+        "final_accuracy": 0.9288888888888889,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.282,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8119,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.9604,
+            "regression_pct": -18.29,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.8118811881188119,
+        "final_precision": 0.7961165048543689,
+        "final_recall": 0.8282828282828283,
+        "final_accuracy": 0.8311111111111111,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.205,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8119,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.6996,
+            "regression_pct": 13.82,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.8118811881188119,
+        "final_precision": 0.7961165048543689,
+        "final_recall": 0.8282828282828283,
+        "final_accuracy": 0.8311111111111111,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 2,
+        "unnecessary_retrain_count": 2,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.745,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8119,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.3333,
+            "regression_pct": 58.94,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.6996,
+            "regression_pct": 13.82,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.8118811881188119,
+        "final_precision": 0.7961165048543689,
+        "final_recall": 0.8282828282828283,
+        "final_accuracy": 0.8311111111111111,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.552,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8119,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.8118811881188119,
+        "final_precision": 0.7961165048543689,
+        "final_recall": 0.8282828282828283,
+        "final_accuracy": 0.8311111111111111,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.558,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.8119,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "11": {
+      "drift_only": {
+        "final_f1": 0.9636803874092009,
+        "final_precision": 0.9660194174757282,
+        "final_recall": 0.961352657004831,
+        "final_accuracy": 0.9333333333333333,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.23,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.77,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.9637,
+            "regression_pct": -25.16,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.7699530516431925,
+        "final_precision": 0.7130434782608696,
+        "final_recall": 0.8367346938775511,
+        "final_accuracy": 0.7822222222222223,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.18,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.77,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.6731,
+            "regression_pct": 12.58,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.7699530516431925,
+        "final_precision": 0.7130434782608696,
+        "final_recall": 0.8367346938775511,
+        "final_accuracy": 0.7822222222222223,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 2,
+        "unnecessary_retrain_count": 2,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.868,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.77,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.2857,
+            "regression_pct": 62.89,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.6731,
+            "regression_pct": 12.58,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.7699530516431925,
+        "final_precision": 0.7130434782608696,
+        "final_recall": 0.8367346938775511,
+        "final_accuracy": 0.7822222222222223,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.575,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.77,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.7699530516431925,
+        "final_precision": 0.7130434782608696,
+        "final_recall": 0.8367346938775511,
+        "final_accuracy": 0.7822222222222223,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.56,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.77,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    },
+    "12": {
+      "drift_only": {
+        "final_f1": 0.9716981132075472,
+        "final_precision": 0.9671361502347418,
+        "final_recall": 0.976303317535545,
+        "final_accuracy": 0.9466666666666667,
+        "retrain_count": 2,
+        "promotion_count": 2,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": 1.0,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.294,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.822,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.9717,
+            "regression_pct": -18.21,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "periodic": {
+        "final_f1": 0.8220338983050848,
+        "final_precision": 0.7698412698412699,
+        "final_recall": 0.8818181818181818,
+        "final_accuracy": 0.8133333333333334,
+        "retrain_count": 3,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 1,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.282,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.822,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": false,
+            "action": "BLOCKED_VOLUME"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.6809,
+            "regression_pct": 17.17,
+            "action": "REJECTED"
+          }
+        ]
+      },
+      "performance_triggered": {
+        "final_f1": 0.8220338983050848,
+        "final_precision": 0.7698412698412699,
+        "final_recall": 0.8818181818181818,
+        "final_accuracy": 0.8133333333333334,
+        "retrain_count": 2,
+        "promotion_count": 1,
+        "rejection_count": 1,
+        "unnecessary_retrain_count": 1,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 1.308,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.822,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "FAIL",
+            "candidate_f1": 0.25,
+            "regression_pct": 69.59,
+            "action": "REJECTED"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "medp": {
+        "final_f1": 0.8220338983050848,
+        "final_precision": 0.7698412698412699,
+        "final_recall": 0.8818181818181818,
+        "final_accuracy": 0.8133333333333334,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.626,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.822,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      },
+      "static": {
+        "final_f1": 0.8220338983050848,
+        "final_precision": 0.7698412698412699,
+        "final_recall": 0.8818181818181818,
+        "final_accuracy": 0.8133333333333334,
+        "retrain_count": 1,
+        "promotion_count": 1,
+        "rejection_count": 0,
+        "unnecessary_retrain_count": 0,
+        "blocked_count": 0,
+        "rollback_count": 0,
+        "mean_cycles_between_promotions": null,
+        "time_to_recovery_cycles": null,
+        "training_seconds": 0.578,
+        "cycles": [
+          {
+            "cycle": 0,
+            "scenario": "healthy",
+            "drift_level": "NORMAL",
+            "evaluation_level": "UNKNOWN",
+            "decided_retrain": true,
+            "volume_ok": true,
+            "gate_result": "PASS",
+            "candidate_f1": 0.822,
+            "regression_pct": null,
+            "action": "PROMOTED"
+          },
+          {
+            "cycle": 1,
+            "scenario": "feature_drift",
+            "drift_level": "SIGNIFICANT",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 2,
+            "scenario": "volume_anomaly",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": false,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 3,
+            "scenario": "label_imbalance",
+            "drift_level": "NORMAL",
+            "evaluation_level": "BAD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          },
+          {
+            "cycle": 4,
+            "scenario": "regression",
+            "drift_level": "NORMAL",
+            "evaluation_level": "GOOD",
+            "decided_retrain": false,
+            "volume_ok": true,
+            "action": "RETAIN"
+          }
+        ]
+      }
+    }
+  }
+}

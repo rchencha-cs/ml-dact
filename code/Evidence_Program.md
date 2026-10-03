@@ -3,8 +3,8 @@
 **Document type:** Experimental validation plan
 **Project:** Quality-Gated Model Evolution in MLOps: An Empirical Study of an Inspectable Decision Procedure for Distribution Shift
 **Target:** journal resubmission
-**Version:** 1.2 — updated 2026-10-03 (EXP-03, EXP-06, EXP-07 complete; see Section 17)
-**Status:** In execution — 3 of 7 experiments complete, 4 remaining (see Section 17 for the live log)
+**Version:** 1.3 — updated 2026-10-03 (all 7 experiments complete; see Section 17)
+**Status:** Experiments complete — 7 of 7 (manuscript update + final hostile review still pending, see Section 13/14)
 **Repository:** `rcramu/ml-dact` (this evidence program lives on branch `evidence-program` of fork `rchencha-cs/ml-dact`, baseline commit `df2ad38`)
 **Rule:** No fabricated results. Results enter the paper only after executable experiments produce them.
 
@@ -22,17 +22,27 @@ The objective is **not** to make the paper longer. The objective is to produce e
 
 | ID | Experiment / Evidence | Priority | Type | Current Status |
 |---|---|---:|---|---|
-| EXP-01 | Independent post-selection holdout | P0 | Methodological validity | Not run |
-| EXP-02 | Matched policy baselines | P0 | Comparative evaluation | Not run |
+| EXP-01 | Independent post-selection holdout | P0 | Methodological validity | **Complete** — `evidence/exp01_holdout.md` |
+| EXP-02 | Matched policy baselines | P0 | Comparative evaluation | **Complete** — `evidence/exp02_matched_baselines.md` |
 | EXP-03 | Threshold provenance audit | P0 | Reproducibility | **Complete** — `evidence/exp03_threshold_provenance.md` |
-| EXP-04 | Structured Electricity replication | P1 | External/transferability | Partial |
-| EXP-05 | Reproducibility artifact audit | P1 | Artifact quality | Partial |
+| EXP-04 | Structured Electricity replication | P1 | External/transferability | **Complete** — `evidence/exp04_electricity_protocol.md` |
+| EXP-05 | Reproducibility artifact audit | P1 | Artifact quality | **Complete** — `evidence/exp05_traceability.md` (7/7 traceable) |
 | EXP-06 | Policy-state transition test suite | P1 | Software-engineering validation | **Complete** — `evidence/exp06_policy_tests.json` (26/26 passing) |
 | EXP-07 | Decision-lineage replay test | P1 | Auditability | **Complete** — `evidence/exp07_decision_lineage_replay.md` (23/23 match) |
 
 ---
 
 # 3. EXP-01 — Independent Post-Selection Holdout
+
+**Status: COMPLETE** — `code/evidence/exp01_holdout.md` + `.json`, commit `00ff42f`.
+Five historical churn-predictor candidates (promoted and rejected) were deterministically
+reproduced from already-persisted run/model identifiers — rejected candidates' weights are
+never saved by `champion_store`, so reproduction is the only way to score them at all — then
+scored against `generate_holdout()`, which uses 5 seeds (900001–900005) grep-verified to
+appear nowhere in any ingestion/training/promotion code path. All 5 reproductions matched
+their stored controller-facing F1 exactly. One finding: the rejected `label_imbalance`
+candidate showed controller-facing F1 = 0.0 but holdout F1 = 0.30 — disclosed as evidence of
+single-split F1 instability under ~2% class prevalence, not a correction to the reported number.
 
 ## Attack addressed
 
@@ -94,6 +104,15 @@ If not feasible, retain the limitation and do not claim unbiased post-selection 
 ---
 
 # 4. EXP-02 — Matched Policy Baselines
+
+**Status: COMPLETE** — `code/evidence/exp02_matched_baselines.md` + `exp02_statistical_summary.md`, commit `6887aea`.
+12 matched seeds × 5 policies (drift_only, periodic, performance_triggered, medp, static), identical
+workload shared byte-for-byte across arms per seed. Result, not spun: **drift_only beats MEDP on
+final quality** (paired Cohen's d = 2.62 — a large effect) at ~2.4× the training compute — a genuine
+negative result for an MEDP-superiority-on-quality claim against drift_only. MEDP **does** match
+periodic/performance_triggered on final quality while using substantially less compute (0 wasted
+retrains vs. 0.83/1.25) — a narrower, supported efficiency claim. MEDP is behaviorally identical to
+the static baseline under this specific 5-cycle protocol (disclosed as a degenerate-case finding).
 
 ## Attack addressed
 
@@ -221,6 +240,14 @@ If provenance cannot be established, label the threshold as an engineering confi
 
 # 6. EXP-04 — Structured Electricity Replication
 
+**Status: COMPLETE** — `code/evidence/exp04_electricity_protocol.md` + `.json`, commit `55afc88`.
+Executed via `scripts/run_electricity_natural.py`, already calling the real `policy.py`/`gates.py`
+functions (per the EXP-06 refactor) rather than a reimplementation. All 9 required protocol items
+documented. Fold 3 (WARNING drift + degraded incumbent) is a concrete counter-example to "drift
+alone predicts promotion": the policy correctly held rather than fired, confirming drift and the
+quality gate operate as independent signals on a second, independently-sourced workload. Reported
+as transferability evidence only, not population-wide generalization.
+
 ## Objective
 
 Test whether the MEDP state relationships appear outside the primary workload.
@@ -255,6 +282,16 @@ This is a **transferability evaluation**, not evidence of population-wide genera
 ---
 
 # 7. EXP-05 — Reproducibility Artifact Audit
+
+**Status: COMPLETE** — `code/evidence/exp05_traceability.md` + `.json`, commit `31366f5`.
+`scripts/exp05_traceability_report.py` audited all 7 evidence files: 7/7 are substantively
+traceable (git commit verified with `git cat-file -e`, not string-matching; producing
+script/test confirmed on disk; `experiment_id` present). Two real gaps were found and fixed,
+not just reported (missing provenance stamps on `score_exp02.py`'s output; a bare copy of
+`run_electricity_natural.py`'s output with no provenance fields, now wrapped). Disclosed gap,
+not hidden: no file carries the PRD's literal 12-field metadata schema verbatim — the substance
+is usually present under a different name (e.g. a seeds list instead of a single `random_seed`
+scalar); tracked as an open follow-up.
 
 ## Objective
 
@@ -417,11 +454,11 @@ Do not change the paper's claims until the evidence is available.
 | Thresholds influence decisions | Available | Provenance audit — **done, EXP-03** |
 | MEDP is auditable | Partially available | Replay experiment strengthens — **done, EXP-07 (23/23 match)** |
 | MEDP is independently testable | Design established | Policy test suite — **done, EXP-06** |
-| MEDP outperforms drift-only | Not established | EXP-02 |
-| MEDP outperforms periodic retraining | Not established | EXP-02 |
-| MEDP outperforms performance-triggered retraining | Not established | EXP-02 |
-| Post-selection performance is unbiased | Not established | EXP-01 |
-| Results generalize broadly | Not established | EXP-04 + more workloads |
+| MEDP outperforms drift-only | **Refuted on quality** — drift-only wins by a large effect (d=2.62), at ~2.4× the compute | EXP-02, done |
+| MEDP outperforms periodic retraining | **Equivalent quality, lower compute** — not a quality-superiority claim, but a supported efficiency one | EXP-02, done |
+| MEDP outperforms performance-triggered retraining | **Equivalent quality, lower compute** — same caveat as above | EXP-02, done |
+| Post-selection performance is unbiased | **Established for the churn-predictor protocol** (5/5 candidates reproduced exactly; holdout deltas reported, including one large one, not hidden) | EXP-01, done |
+| Results generalize broadly | Still **not established** — EXP-04 is one additional workload (transferability only); still not a population-wide generalization claim | EXP-04 done; broader generalization remains out of scope |
 | MEDP is universally optimal | Not claimed | Do not claim |
 
 ---
@@ -609,13 +646,10 @@ No numerical results were changed in this pass.
 
 ## Still evidence-dependent
 
-No new result was invented. As of v1.2 (Section 17), EXP-03, EXP-06, and EXP-07
-are complete; the remaining open items are:
-
-- EXP-01 independent post-selection holdout
-- EXP-02 matched policy baselines
-- EXP-04 structured Electricity replication
-- EXP-05 reproducibility artifact audit
+No new result was invented. As of v1.3 (Section 17), all 7 of EXP-01 through
+EXP-07 are complete. What remains open is the manuscript update itself
+(Section 12) and the final Pass 6 hostile review (Section 14, P6-04) applied
+to the actual evidence produced — not any further experiment execution.
 
 
 ---
@@ -633,13 +667,15 @@ are complete; the remaining open items are:
 
 ## Evidence-dependent items remain unchanged
 
-No results were fabricated or inferred. As of v1.2, EXP-03, EXP-06, and EXP-07
-have been executed from the research code with verified artifacts (Section 17);
-EXP-01, EXP-02, EXP-04, and EXP-05 remain open.
+No results were fabricated or inferred. As of v1.3, all 7 experiments (EXP-01
+through EXP-07) have been executed from the research code with verified
+artifacts (Section 17). Manuscript claims should now be updated only from
+these actual outputs, per Section 12's rules — including where the evidence
+is mixed or negative (EXP-02's drift-only result) rather than only favorable.
 
 ---
 
-# 17. Execution Log — Evidence Program v1.2
+# 17. Execution Log — Evidence Program v1.3
 
 Tracks actual progress against Sections 2–9. Updated only from real command
 output and committed artifacts, never from memory, per this document's
@@ -651,10 +687,16 @@ non-negotiable research rule.
 | EXP-03 — threshold provenance audit | **Done** | `808dd9f` | `code/evidence/exp03_threshold_provenance.md`, `.json` |
 | EXP-06 — policy-state test suite | **Done** | `808dd9f`, `8a70e1d` | `code/evidence/exp06_policy_tests.json`; 26/26 tests passing in `backend/tests/test_policy.py` |
 | EXP-07 — decision-lineage replay | **Done** | `aae2df0`, `35b1f7a` | `code/evidence/exp07_decision_lineage_replay.md`, `.json`; 23/23 replayed decisions matched (100%) |
-| EXP-01 — independent holdout | Not started | — | Needs a new seeded split never wired into ingestion |
-| EXP-02 — matched policy baselines | Not started | — | Needs drift-only/periodic/performance-triggered policy variants alongside MEDP |
-| EXP-04 — structured Electricity replication | Not started | — | Will extend `scripts/run_electricity_natural.py` to call the real `policy.py`/`gates.py` |
-| EXP-05 — reproducibility artifact audit | Not started | — | Will stamp every `evidence/*.json` with the full provenance block once the other experiments exist to audit |
+| EXP-01 — independent holdout | **Done** | `00ff42f` | `code/evidence/exp01_holdout.md`, `.json`; 5/5 candidates reproduced exactly |
+| EXP-02 — matched policy baselines | **Done** | `6887aea` | `code/evidence/exp02_matched_baselines.md`, `exp02_statistical_summary.md`; 12 seeds x 5 policies |
+| EXP-04 — structured Electricity replication | **Done** | `55afc88` | `code/evidence/exp04_electricity_protocol.md`, `.json`; 9/9 protocol items documented |
+| EXP-05 — reproducibility artifact audit | **Done** | `31366f5` | `code/evidence/exp05_traceability.md`, `.json`; 7/7 evidence files substantively traceable |
+
+All 7 experiments are now complete. Remaining work per Section 12: update the
+manuscript's Methods/Results/Discussion/Threats-to-validity/Conclusion sections
+from these actual outputs (including the negative EXP-02 drift-only result and
+the EXP-05 disclosed schema gap), then run the Pass 6 final hostile review
+(Section 14, P6-04).
 
 **Where this lives:** the working repository is `code/` in this project directory
 (its own local git history, commits above). A snapshot of this work was also

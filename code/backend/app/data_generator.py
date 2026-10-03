@@ -150,6 +150,32 @@ def generate_scenario(scenario: str, seed: int, expected_rows: int = 1500) -> li
     return records
 
 
+# EXP-01 independent post-selection holdout: one fixed seed per scenario,
+# chosen here and never passed to generate_scenario() by any ingestion,
+# training, or policy code path (seed.py, pipeline_engine.py, routers/*.py).
+# These rows are never train/val/test -- they exist only for this holdout.
+_HOLDOUT_SEEDS = {
+    "healthy": 900_001,
+    "feature_drift": 900_002,
+    "volume_anomaly": 900_003,
+    "label_imbalance": 900_004,
+    "regression": 900_005,
+}
+
+
+def generate_holdout(scenario: str, expected_rows: int = 1500) -> list[dict]:
+    """Independent final holdout for EXP-01. Reuses generate_scenario()'s data
+    model with a seed reserved for this purpose, then marks every row
+    'holdout' (never 'train'/'val'/'test') so it cannot silently enter a
+    training split even if misused."""
+    if scenario not in _HOLDOUT_SEEDS:
+        raise ValueError(f"no reserved holdout seed for scenario {scenario!r}")
+    records = generate_scenario(scenario, _HOLDOUT_SEEDS[scenario], expected_rows)
+    for r in records:
+        r["split"] = "holdout"
+    return records
+
+
 def records_to_arrays(records: list[dict], split: str | None = None):
     """Converts stored RawRecord-shaped dicts back into (X, y) numpy arrays for training/eval."""
     rows = [r for r in records if split is None or r["split"] == split]
